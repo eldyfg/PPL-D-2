@@ -3,12 +3,25 @@ import apiFetch from './api-client';
 const invoiceDetail = document.getElementById('invoice-detail');
 
 if (invoiceDetail) {
-    const money = value => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(Number(value));
-    const date = value => value ? new Intl.DateTimeFormat('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(value)) : '-';
+    const money = value => new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        maximumFractionDigits: 0,
+    }).format(Number(value));
+    const date = value => value
+        ? new Intl.DateTimeFormat('id-ID', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+        }).format(new Date(value))
+        : '-';
     const invoiceId = invoiceDetail.dataset.invoiceId;
+
     apiFetch(`/api/v1/invoices/${encodeURIComponent(invoiceId)}`).then(async response => {
         const payload = await response.json();
+
         if (!response.ok) throw new Error(payload.message || 'Detail invoice gagal dimuat.');
+
         const item = payload.data;
         const relation = item.terkait || {};
         const history = item.riwayat || [];
