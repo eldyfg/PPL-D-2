@@ -26,7 +26,6 @@ class InvoiceController extends Controller
     ): JsonResponse {
         $terminId = $request->input('terminId');
         $invoiceDate = $request->input('invoiceDate');
-        $dppAmount = (float) $request->input('dppAmount');
 
         // 1. Validasi Keberadaan Termin (404)
         $termin = Termin::with('contract')->find($terminId);
@@ -36,6 +35,23 @@ class InvoiceController extends Controller
                 'code' => 'TERMIN_NOT_FOUND',
                 'message' => "Termin dengan ID '{$terminId}' tidak ditemukan",
             ], 404);
+        }
+
+        $dppAmount = (float) $termin->termin_value;
+
+        // DPP invoice selalu mengikuti nilai termin dan tidak boleh diubah oleh client.
+        $requestedDpp = number_format((float) $request->input('dppAmount'), 2, '.', '');
+        $terminDpp = number_format((float) $termin->termin_value, 2, '.', '');
+        if ($requestedDpp !== $terminDpp) {
+            return response()->json([
+                'status' => 'error',
+                'code' => 'DPP_MISMATCH',
+                'message' => 'DPP invoice harus sama dengan nilai termin',
+                'details' => [
+                    'terminId' => $termin->termin_id,
+                    'terminValue' => $terminDpp,
+                ],
+            ], 422);
         }
 
         // 2. Validasi Status Termin & Pencegahan Duplikasi Penagihan (409)

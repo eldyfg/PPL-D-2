@@ -52,6 +52,17 @@ class ModulD2Seeder extends Seeder
             ]
         );
 
+        $contract5 = Contract::updateOrCreate(
+            ['contract_id' => 'ktr-demo-005'],
+            [
+                'project_id' => 'prj-demo-005',
+                'contract_number' => 'KTR/2026/005',
+                'contract_value' => 120000000.00,
+                'created_by' => 'emp-demo-007',
+                'created_at' => Carbon::parse('2026-10-28 03:15:00'),
+            ]
+        );
+
         // 3. Termins (Sesuai contoh di OpenAPI & termins_get_success.json)
         // trm-demo-001: Siap Ditagih (PO_ADA)
         Termin::updateOrCreate(
@@ -85,6 +96,17 @@ class ModulD2Seeder extends Seeder
                 'termin_number' => 1,
                 'termin_value' => 80000000.00,
                 'due_date' => '2026-10-20',
+                'status' => 'SIAP_DITAGIH',
+            ]
+        );
+
+        Termin::updateOrCreate(
+            ['termin_id' => 'trm-demo-005'],
+            [
+                'contract_id' => 'ktr-demo-005',
+                'termin_number' => 1,
+                'termin_value' => 60000000.00,
+                'due_date' => '2026-11-15',
                 'status' => 'SIAP_DITAGIH',
             ]
         );

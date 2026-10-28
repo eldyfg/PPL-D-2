@@ -66,9 +66,14 @@ if (invoiceForm) {
             const response = await apiFetch('/api/v1/invoices', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ terminId: select.value, invoiceDate: date.value, dppAmount: dpp.value }) });
             const payload = await response.json();
             if (!response.ok) throw new Error(payload.message || 'Invoice gagal dibuat.');
+            sessionStorage.setItem('app-toast', JSON.stringify({
+                message: payload.message || 'Invoice berhasil dibuat.',
+                type: 'success',
+            }));
             location.href = `/invoices/${encodeURIComponent(payload.data.invoiceId)}`;
         } catch (exception) {
             show(exception.message);
+            window.showToast?.(exception.message || 'Invoice gagal dibuat.', 'error');
             button.disabled = false;
             button.textContent = 'Simpan invoice';
         }

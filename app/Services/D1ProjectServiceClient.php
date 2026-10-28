@@ -35,6 +35,15 @@ class D1ProjectServiceClient
             'clientId' => 'cli-demo-002',
             'status' => 'ACTIVE',
         ],
+        'prj-demo-005' => [
+            'projectId' => 'prj-demo-005',
+            'projectName' => 'Pengembangan Aplikasi Mobile',
+            'poReceived' => true,
+            'poStatus' => 'PO_ADA',
+            'isTemporaryClient' => false,
+            'clientId' => 'cli-demo-002',
+            'status' => 'ACTIVE',
+        ],
         'prj-demo-temp' => [
             'projectId' => 'prj-demo-temp',
             'projectName' => 'Pengadaan Lisensi Sementara',
