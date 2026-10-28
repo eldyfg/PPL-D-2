@@ -12,7 +12,7 @@
     </head>
     <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
         <div id="toast-container" class="pointer-events-none fixed right-5 top-5 z-50 flex w-[min(24rem,calc(100vw-2.5rem))] flex-col gap-3" aria-live="polite" aria-atomic="true"></div>
-        <div class="min-h-screen lg:flex">
+        <div class="app-shell min-h-screen lg:flex">
             <div
                 id="sidebar-backdrop"
                 class="fixed inset-0 z-30 hidden bg-slate-950/40 backdrop-blur-sm lg:hidden"
@@ -71,7 +71,7 @@
                     </div>
                 </header>
 
-                <main class="flex-1 px-5 py-7 md:px-8 lg:px-10">
+                <main class="app-main flex-1 px-5 py-7 md:px-8 lg:px-10">
                     <div class="mx-auto max-w-7xl">
                         @if (session('success'))
                             <div class="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700" role="status">

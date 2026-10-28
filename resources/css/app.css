@@ -39,3 +39,39 @@
 .toast-leave {
     animation: toast-leave 220ms ease-in both;
 }
+
+@media print {
+    @page {
+        margin: 1.5cm;
+    }
+
+    body {
+        background: white !important;
+    }
+
+    header,
+    aside,
+    #sidebar-backdrop,
+    #toast-container,
+    .no-print {
+        display: none !important;
+    }
+
+    .app-main {
+        padding: 0 !important;
+    }
+
+    .invoice-print-area {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .invoice-print-area .bg-slate-50 {
+        background: white !important;
+    }
+}
