@@ -75,6 +75,7 @@ php artisan migrate:fresh --seed
 #### B. Menjalankan Server Lokal
 ```bash
 php artisan serve
+npm run dev
 ```
 Server akan aktif di `http://127.0.0.1:8000`. Anda dapat menguji endpoint berikut:
 * `GET  /api/v1/termins` (Daftar termin siap ditagih & status PO D-1)
