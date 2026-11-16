@@ -28,7 +28,10 @@ class ContractController extends Controller
             ], 503);
         }
 
-        if (!$project || ($project['status'] ?? 'ACTIVE') !== 'ACTIVE') {
+        $allowedStatuses = ['ACTIVE', 'REGISTERED'];
+        $projectStatus = $project['status'] ?? 'ACTIVE';
+
+        if (!$project || !in_array($projectStatus, $allowedStatuses)) {
             return response()->json([
                 'status' => 'error',
                 'code' => 'INVALID_PROJECT',

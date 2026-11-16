@@ -42,7 +42,7 @@ class D1ProjectServiceClient
         $baseUrl = config('services.modul_d1.base_url', env('D1_SERVICE_BASE_URL', 'http://localhost:3000/api/v1'));
         
         // Ambil token yang sudah kitauji sebelumnya
-        $token = env('F2_API_TOKEN', 'dummy-token-lokal');
+        $token = env('API_DUMMY_TOKEN', 'dummy-token-lokal');
 
         if (!empty($baseUrl)) {
             try {
@@ -54,6 +54,8 @@ class D1ProjectServiceClient
                 if ($response->status() === 404) {
                     return null;
                 }
+
+                Log::info('RESPONS D-1:', $response->json());
 
                 if ($response->failed()) {
                     throw new D1ServiceUnavailableException('Layanan eksternal D-1 mengalami gangguan HTTP ' . $response->status());

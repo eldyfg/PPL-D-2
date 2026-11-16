@@ -33,7 +33,7 @@ class ModulD2Seeder extends Seeder
         $contract1 = Contract::updateOrCreate(
             ['contract_id' => 'ktr-demo-001'],
             [
-                'project_id' => 'prj-demo-001',
+                'project_id' => '01924b1e-7f32-7a81-9b12-45e8a1234567',
                 'contract_number' => 'KTR/2026/001',
                 'contract_value' => 500000000.00,
                 'created_by' => 'emp-demo-007',
@@ -115,7 +115,7 @@ class ModulD2Seeder extends Seeder
         $sampleContract = Contract::updateOrCreate(
             ['contract_id' => 'ktr-demo-sample'],
             [
-                'project_id' => 'prj-demo-001',
+                'project_id' => '01924b1e-7f32-7a81-9b12-45e8a1234567',
                 'contract_number' => 'KTR/2026/SAMPLE',
                 'contract_value' => 200000000.00,
                 'created_by' => 'emp-demo-007',
