@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'modul_d1' => [
+        'base_url' => env('D1_SERVICE_BASE_URL'),
+    ],
+
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
     ],
