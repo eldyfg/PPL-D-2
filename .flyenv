@@ -1,0 +1,2 @@
+$env:PATH = 'C:\Users\hp552\AppData\Local\Programs\FlyEnv-Data\app\nodejs\v24.22.1;' + $env:PATH #FlyEnv-ID-loXIetYeTEop6WQH5wBZQHJdKx3zw7Lf
+$env:PATH = 'C:\Users\hp552\AppData\Local\Programs\FlyEnv-Data\app\php-8.3.36;' + $env:PATH #FlyEnv-ID-GdHNxG6RDxqVbTBGrOImq6Lywj9jcPLO
